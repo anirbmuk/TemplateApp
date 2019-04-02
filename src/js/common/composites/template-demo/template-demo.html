@@ -1,0 +1,17 @@
+<div class="oj-panel">
+    <oj-collapsible id="collapsiblePage">
+        <h3 id="h" slot="header">Search</h3>
+        <div data-bind="template: { 'name': searchGroupTemplate.name, 'data': searchGroupTemplate.value }"></div>
+    </oj-collapsible>
+</div>
+<script type="text/html" id="search-group-template">
+    <div class="oj-form-layout">
+        <div class="oj-form" data-bind="foreach: groups">
+            <oj-bind-if test="[[$data.visible]]">
+                <oj-label for="[[$data.id]]" show-required="[[$data.isRequired]]"><span data-bind="text: $data.label"></span></oj-label>
+                <input data-bind="ojComponent: {component: $data.component, value: $data.inputValue, required: $data.isRequired}, 
+                        attr: {id: $data.id}"></input>
+            </oj-bind-if>
+        </div>
+    </div>
+</script>
